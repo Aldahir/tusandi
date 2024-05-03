@@ -1,0 +1,90 @@
+<%- include('../includes/header') %>
+<%- include('../includes/sidebar') %>
+<div class="main-content">
+<%- include('../includes/navbar') %>
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div id="content" class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumbs">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin"> Início </a></li>
+                            <li class="breadcrumb-item"><a href="/admin/parceiros"> Parceiros </a></li>
+                            <li class="breadcrumb-item active" aria-current="page"> Editar parceiro <%= data.nome %> </li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class="col-12">
+                    <div class="mt-3">
+                        <h1 class="h1 fw-bolder">Editar parceiro <%= data.nome %></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5 p-5 bg-white rounded">
+                <% let imgFolder;let imgName;let img;
+                    if (data.img != undefined){
+                        img = data.img.split('/');
+                        imgFolder = img[3];
+                        imgName = img[4];}
+                 %>
+                <form action="/admin/api/v1.0.1/parceiros/editar/<%= data.id %>" enctype="multipart/form-data" method="post" class="row">
+                    <div class="col-lg-4">
+                        <div class="img-preview rounded">
+                            <img src="<%= data.img %>" onclick="document.getElementById('imgPath').click()" alt=""
+                                class="img-fluid img-recept rounded">
+                        </div>
+                        <div class="mt-3">
+                            <input type="hidden" name="folderName" value="<% data.img != undefined ? imgFolder : null %>">
+                            <input type="hidden" name="fileName" value="<%= data.img %>">
+                            <input style="left: -12000px;" type="file" value="<%= data.img ? imgName : null %>" name="imgPath" id="imgPath" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-xl-12 mt-3">
+                                <label for="nome">Nome do parceiro:</label>
+                                <input class="form-control" value="<%= data.nome %>" name="nome" type="text">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 mt-3">
+                                <label for="telefone">Telefone:</label>
+                                <input class="form-control" value="<%= data.telefone %>" name="telefone" type="text">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 mt-3">
+                                <label class="d-block" for="estado">Estado:</label>
+                                <div class="d-flex justify-content-start gap-2 align-items-center">
+                                    <input type="radio" class="form-check-inline" value="1" name="estado" id="eYes"> Activado
+                                    <input type="radio" class="form-check-inline" value="0" name="estado" id="eNo"> Desactivado
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 mt-3">
+                                <label for="url">Link do parceiro:</label>
+                                <input class="form-control" value="<%= data.url %>" name="url" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 col-lg-12 d-flex justify-content-around gap-3">
+                        <div class="flex-grow-0 border-0" style="text-align: center;">
+                            <button type="button" onclick="history.back()" class="btn btn-primary">Voltar</button>
+                        </div>
+                        
+                        <div class="flex-grow-0 border-0" style="text-align: center;">
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                        
+                        <div class="flex-grow-0 border-0" style="text-align: center;">
+                            <button type="reset" class="btn btn-danger">Limpar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../includes/footer') %>

@@ -1,0 +1,18 @@
+{
+  "name": "Tusandi",
+  "short_name": "tusandi",
+  "theme_color": "#FF5722",
+  "background_color": "#F3F5FC",
+  "color":"#011633",
+  "display_override": ["fullscreen", "minimal-ui"],
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/?st_id=pwa",
+  "icons": [
+    {
+      "src": "img/icon.svg",
+      "sizes": "any"
+    }
+  ]
+}

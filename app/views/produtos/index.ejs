@@ -1,0 +1,188 @@
+<%- include('../includes/header.ejs') -%>
+
+<style>
+    .sidebar {
+        transform: translateY(0);
+        transition: transform 1s cubic-bezier(0.92, 0.18, 0.17, 1.21);
+    }
+
+    .sidebar.position-fixed {
+        transform: translateY(3%) !important;
+        width: 18.2%;
+        transition: transform 1s cubic-bezier(0.92, 0.18, 0.17, 1.21);
+        top: 3%;
+    }
+</style>
+
+<section class="mt-5 pb-5">
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <nav aria-label="breadcrumbs">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item small"><a href="/"><i class="small far fa-home"></i></a></li>
+                        <li class="breadcrumb-item small active" aria-current="page"> Procurar </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row _e34dd position-relative">
+            <div class="col-lg-3">
+                <div class="sidebar">
+                    <div class="accordion accordion-flush" id="acc01">
+                        <div class="controller accordion-item">
+                            <div
+                                class="align-items-top bg-black bg-opacity-10 d-flex gap-0 gap-lg-3 justify-content-between rounded">
+                                <div class="ps-4 py-3">
+                                    <b class="d-block">Procurar em toda loja</b>
+                                    <small class="lh-sm s7-text-small-2 small">Mostrar todos os produtos e promoçōes de
+                                        toda a loja</small>
+                                </div>
+                                <form action="" method="post" class="d-flex pe-4 py-3">
+                                    <label for="search-all" class="position-relative switch">
+                                        <input type="checkbox" name="search-all" id="search-all"
+                                            class="h-100 opacity-0 position-absolute switch-toggle w-100">
+                                        <span class="slide-control rounded-pill"></span>
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button type="button" class="accordion-button collapsed"
+                                    data-bs-target="#acc-content-01" data-bs-toggle="collapse"
+                                    aria-expanded="false">Preço</button>
+                            </h2>
+                            <div id="acc-content-01" class="accordion-collapse collapse" data-bs-parent="#acc01">
+                                <form action="" id="pricerange">
+                                    <div class="input-group my-lg-4 input-group-sm">
+                                        <span class="input-group-text bg-transparent border-0 min-price"
+                                            id="inputGroup-sizing-sm-1">Kz 00</span>
+                                        <input class="form-range w-50" type="range" name="preco" id="preco">
+                                        <span class="input-group-text max-price bg-transparent border-0"
+                                            id="inputGroup-sizing-sm">Kz 300.000</span>
+                                    </div>
+                                    <div class="group-sm">
+                                        <span class="fw-semibold">Ajustar preço:</span>
+                                    </div>
+                                    <div class="input-group my-lg-2 input-group-sm">
+                                        <input type="number" class="form-control" value="10000" name="inp-preco"
+                                            id="inp-preco">
+                                        <button type="button" class="btn bg-orange max-price text-white"
+                                            id="inputGroup-sizing-sm">Aplicar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button type="button" class="accordion-button" data-bs-target="#acc-content-02"
+                                    data-bs-toggle="collapse" aria-expanded="true" id="categoria">Categorias</button>
+                            </h2>
+                            <div id="acc-content-02" class="accordion-collapse collapse show" data-bs-parent="#acc01">
+                                <ul class="ctg navbar-nav categ-lista border"></ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button type="button" class="accordion-button collapsed"
+                                    data-bs-target="#acc-content-03" data-bs-toggle="collapse"
+                                    aria-expanded="false">Detalhes</button>
+                            </h2>
+                            <div id="acc-content-03" class="accordion-collapse collapse" data-bs-parent="#acc01">
+                                <ul class="ctg navbar-nav categ-lista border">
+                                    <li class="nav-item"><a class="nav-link ms-lg-4"
+                                            href="/produto/?tipo=novo">Novos</a></li>
+                                    <li class="nav-item"><a class="nav-link ms-lg-4"
+                                            href="/produto/?tipo=usado">Usados</a></li>
+                                    <li class="nav-item"><a class="nav-link ms-lg-4"
+                                            href="/produto/?tipo=reparado">Recondicionados</a></li>
+                                    <li class="nav-item"><a class="nav-link ms-lg-4"
+                                            href="/produto/?tipo=avariado">Avariados</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="row filter mb-4">
+                    <div class="container">
+                        <form action="" method="post" class="">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="buttons gap-lg-2 d-flex">
+                                    <button id="lines" type="button" class="btn btn-light border p-2 rounded-0 fa fa-bars"></button>
+                                    <button id="grid" type="button" class="btn btn-light border p-2 rounded-0 fa fa-grip"></button>
+                                </div>
+                                <div class="sort d-flex bg-light gap-lg-1 border align-items-center">
+                                    <i type="button" class="btn fa fa-bars-staggered"></i>
+                                    <select name="order-by" id="order-by" class="form-select bg-transparent rounded-0 border-0">
+                                        <option disabled>Filtrar por:</option>
+                                        <option value="relevance" selected>Mais popular</option>
+                                        <option value="novelty">Novo</option>
+                                        <option value="name-asc">Nome (ascendente)</option>
+                                        <option value="name-desc">Nome (descendente)</option>
+                                        <option value="price-asc">Preço (mais barato)</option>
+                                        <option value="price-desc">Preço (mais caro)</option>
+                                        <!-- <option value="">Data de</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="procurar lists row"></div>
+            </div>
+
+            <div class="row paginacao pt-lg-3">
+                <nav aria-label="Page navigation" class="d-flex justify-content-center">
+                    <ul class="pagination m-0"></ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("readystatechange", (ev)=>{
+        if (ev.target.readyState === "complete"){
+            // console.log(getCookie("produtView"))
+
+            renderProduto(document.querySelector('.procurar'), null, null)
+
+            if(getCookie("produtView") === "grid"){
+                document.querySelector('.procurar').classList.remove("lists")
+                document.querySelector('.procurar').classList.add("grid")
+            }
+
+            listener(document.getElementById("order-by"), (e)=>{
+                renderProduto(document.querySelector('.procurar'), Number(gQURL(location.href, 'page')),  e.target.value)
+            }, "change");
+
+            listener(document.getElementById('search-all'), (e) => {
+                if (e.target.checked) {
+                    document.getElementById('search-all').checked = getCookie('searchAllStore')
+                    setCookie('searchAllStore', e.target.checked, 3)
+                } else {
+                    e.target.removeAttribute('checked')
+                    setCookie('searchAllStore', false, 3)
+                }
+                // console.log(e.target.checked)
+            }, "change")
+
+            listener(document.getElementById("grid"), ()=>{
+                document.querySelector('.procurar').classList.remove("lists")
+                setCookie("produtView", "grid", 3);
+            }, "click");
+
+            listener(document.getElementById("lines"), ()=>{
+                setCookie("produtView", "lists", 3);
+                document.querySelector('.procurar').classList.add("lists")
+            }, "click");
+        }
+    })
+</script>
+
+<%- include('../includes/footer.ejs') -%>

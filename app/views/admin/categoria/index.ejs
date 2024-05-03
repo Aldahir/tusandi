@@ -1,0 +1,55 @@
+<%- include('../includes/header') %>
+<%- include('../includes/sidebar') %>
+<div class="main-content">
+    <%- include('../includes/navbar') %>
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumbs">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin">Início</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"> Categorias </li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class="col-12">
+                    <div class="d-flex justify-content-between">
+                        <h1 class="h1 fw-bolder">Categorias</h1>
+                        <div class="d-flex gap-3">
+                            <a href="/admin/categoria/novo" class="btn btn-outline-dark">Nova categoria</a>
+                            <a href="/admin/produto" class="btn btn-outline-dark">Ver produtos</a>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <table width="100%" class="table table-responsive header fs-6">
+                    <thead>
+                        <tr>
+                            <th>Número</th>
+                            <th>Nome categoria</th>
+                            <th>#Acção</th>
+                        </tr>
+                    </thead>
+                    <tbody class="body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("readystatechange", (e) => {
+        if (e.target.readyState === "complete") {
+            getAllCategories(1)
+            getAllCategories(2)
+    }})
+</script>
+
+<%- include('../includes/footer') %>

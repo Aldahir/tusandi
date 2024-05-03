@@ -1,0 +1,195 @@
+<%- include('../includes/header.ejs') -%>
+
+<main class="py-5 mb-5">
+    <div class="container">
+        <div class="row _23s position-relavite">
+
+            <div class="col-12 mb-4">
+                <nav aria-label="breadcrumbs">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item small"><a href="/"><i class="small far fa-home"></i></a></li>
+                        <li class="breadcrumb-item small"><a href="/usuario">Usuário</a></li>
+                        <li class="breadcrumb-item small active" aria-current="page"> Perfil </li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="bg-white rounded-0 d-flex flex-column shadow-sm">
+                    <img src="" id="profile-img" class="img-fluid" alt="Foto de perfil de">
+                    <div class="px-4 d-flex justify-content-between align-content-center align-items-center">
+                        <b class="username"></b>
+                        <span class="badge px-3 bg-success rounded-pill small">Normal</span>
+                    </div>
+
+                    <hr class="hr">
+
+                    <ul class="nav nav-pills flex-column" role="tablist" id="menu-user">
+                        <li class="nav-item" role="presentation"><a href="#pg-1" data-bs-toggle="pill"
+                                data-bs-target="#pg-1" role="tab" aria-controls="pg-1" id="pg-tab-1"
+                                aria-selected="true" class="py-3 nav-link active rounded">Área pessoal</a></li>
+                        <li class="nav-item" role="presentation"><a href="#pg-2" data-bs-toggle="pill"
+                                data-bs-target="#pg-2" role="tab" aria-controls="pg-2" id="pg-tab-2"
+                                aria-selected="false" class="py-3 nav-link">A sua conta</a></li>
+                        <!-- <li class="nav-item" role="presentation"><a href="#pg-4" data-bs-toggle="pill"
+                                data-bs-target="#pg-4" role="tab" aria-controls="pg-4" id="pg-tab-4"
+                                aria-selected="false" class="py-3 nav-link rounded-0">Seus endereços</a></li> -->
+                        <li class="nav-item" role="presentation"><a href="#pg-3" data-bs-toggle="pill"
+                                data-bs-target="#pg-3" role="tab" aria-controls="pg-3" id="pg-tab-3"
+                                aria-selected="false" class="py-3 nav-link">Histórico de pagamentos</a></li>
+                    </ul>
+
+                    <a href="/usuario/sair" class="rounded mt-2 btn bg-orange text-white">Terminar sessão</a>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="bg-white rounded-0 shadow-sm p-4">
+                    <div class="tab-content" id="content">
+                        <div class="tab-pane fade show active" id="pg-1" role="tabpanel" aria-labelledby="pg-tab-1">
+                            <h2 class="fw-light">Olá <span class="snome"></span>. Bem-vindo à sua área pessoal</h2>
+                            <div class="mt-4">
+                                <div class="">Assumenda at itaque dicta aliquid totam cum eius voluptas dolorem optio
+                                    excepturi</div>
+                                <div class="pedido">
+                                    <div class="title mt-3 fw-semibold fs-5">Suas encomendas</div>
+                                    <hr class="hr my-3">
+                                    <div class="pedido-abc border-bottom py-3">
+                                        <div class="mb-1">
+                                            <div class="d-flex flex-column flex-lg-row gap-4 justify-content-between mt-2">
+                                                <div class="d-flex small flex-column">
+                                                    <span class="small">Código do pedido</span>
+                                                    <a class="fw-bold">PIX-EFX-444525</a>
+                                                </div>
+                                                <div class="d-flex small flex-column">
+                                                    <span class="small">Trabalhos</span>
+                                                    <span class="">1</span>
+                                                </div>
+
+                                                <div class="align-items-start d-flex flex-column small">
+                                                    <span class="small">Estado do pagamento</span>
+                                                    <span class="badge bg-danger px-4 rounded-pill">Não pago</span>
+                                                </div>
+
+                                                <div class="d-flex flex-column small">
+                                                    <span class="small">Data</span>
+                                                    <div class="">24/06/2023</div>
+                                                </div>
+                                            </div>
+                                            <div class="link small mt-3"><a href="" class="small">Ver detalhes
+                                                    &RightArrow;</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="pedido-abc border-bottom py-3">
+                                        <div class="mb-1">
+                                            <div class="d-flex flex-column flex-lg-row gap-4 justify-content-between mt-2">
+                                                <div class="d-flex small flex-column">
+                                                    <span class="small">Código do pedido</span>
+                                                    <a class="fw-bold">PIX-EFX-444525</a>
+                                                </div>
+                                                <div class="d-flex small flex-column">
+                                                    <span class="small">Trabalhos</span>
+                                                    <span class="">1</span>
+                                                </div>
+
+                                                <div class="align-items-start d-flex flex-column small">
+                                                    <span class="small">Estado do pagamento</span>
+                                                    <span class="badge bg-warning px-4 rounded-pill">Aguardando
+                                                        entrega</span>
+                                                </div>
+
+                                                <div class="d-flex flex-column small">
+                                                    <span class="small">Data</span>
+                                                    <div class="">24/06/2023</div>
+                                                </div>
+                                                <!-- <div class="d-flex flex-column small">
+                                                    <span class="small">Valor</span>
+                                                    <div class="">999.350,999,00</div>
+                                                </div> -->
+                                            </div>
+                                            <div class="link small mt-3"><a href="" class="small">Ver detalhes
+                                                    &RightArrow;</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="pg-2" role="tabpanel" aria-labelledby="pg-tab-2">
+                            <h2 class="fw-light">Perfil</h2>
+                            <div class="mt-4">
+                                <div class="">Assumenda at itaque dicta aliquid totam cum eius voluptas dolorem optio
+                                    excepturi</div>
+                                <div class="pedido">
+                                    <div class="title mt-3 fw-semibold fs-5">A sua conta</div>
+                                    <hr class="hr my-3">
+                                    <div class="d-flex gap-lg-3">
+                                        <div class="pedido-abc w-50 py-3">
+                                            <div class="mb-3 fw-semibold">Nome completo: <span class="nome fw-regular"></span></div>
+                                            <div class="mb-3 fw-semibold">Nome de utilizador: <span class="unome fw-regular"></span></div>
+                                            <div class="mb-3 fw-semibold">Telefone: <span class="sessao-phone fw-regular"></span></div>
+                                            <div class="mb-3 fw-semibold">E-mail: <span class="email fw-regular"></span></div>
+                                        </div>
+                                        <div class="pedido-abc w-50 py-3">
+                                            <div class="mb-3 fw-semibold">Género: <span class="sexo fw-regular"></span></div>
+                                            <div class="mb-3 fw-semibold">Endereço: <span class="endereco fw-regular"></span></div>
+                                            <div class="userid" data-uid=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3"><a id="opEdit" onclick="openModal('','editar')" class="rounded px-5 btn bg-orange text-white">Editar</a></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="tab-pane fade" id="pg-4" role="tabpanel" aria-labelledby="pg-tab-4">
+
+                            <h2 class="fw-light">Endereços de entrega</h2>
+
+                            <div class="pedido-abc py-3">
+                                <div class="d-flex flex-column justify-content-center align-items-center">
+                                    <div class="fs-4 text-center lh-lg text-dark opacity-50 mb-3">Você não possiu um
+                                        endereço de entrega cadastrado.
+                                        <br>Por favor adicione um endereço no botão aqui em baixo
+                                    </div>
+                                    <a id="opDelivery"
+                                        class="border-1 rounded-0 border-dark border-opacity-25 btn btn-light">Adicinar
+                                        novo
+                                        endereço de entrega</a>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="tab-pane fade" id="pg-3" role="tabpanel" aria-labelledby="pg-tab-3">
+
+                            <h2 class="fw-light">Histórico de pagamentos</h2>
+
+                            <div class="pedido-abc py-3">
+                                <div class="d-flex flex-column justify-content-center align-items-center">
+                                    <div class="fs-4 text-center lh-lg text-dark opacity-50 mb-3">Sem histórico ainda!
+                                        <br>Por favor efectue um pagamento para guardar nos hist]oricos. Clique no botão
+                                        abaixo para procurar produto na loja
+                                    </div>
+                                    <a href="/"
+                                        class="border-1 rounded btn text-white bg-orange">Procurar
+                                        na loja</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- <script src="/js/functions.js"></script>
+<script src="/js/script.js"></script> -->
+<style>
+    ._23s .wrapper {
+        backdrop-filter: blur(15px);
+    }
+</style>
+<script>
+    getUserData();
+</script>
+
+<%- include('../includes/footer.ejs') -%>

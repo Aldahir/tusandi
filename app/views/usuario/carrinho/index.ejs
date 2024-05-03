@@ -1,0 +1,73 @@
+<%- include('../../includes/header.ejs') -%>
+
+    <section class="mt-5 pb-5">
+        <main class="py-5">
+            <div class="container">
+                <div class="row">
+        
+                    <div class="col-12 mb-4">
+                        <nav aria-label="breadcrumbs">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item small"><a href="/">Início</a></li>
+                                <li class="breadcrumb-item small"><a href="/usuario">Usuário</a></li>
+                                <li class="breadcrumb-item small active" aria-current="page">Carrinho</li>
+                            </ol>
+                        </nav>
+                    </div>
+        
+                    <div class="col-sm-12 col-lg-12 cart-recept">
+                        <h2 class="fw-light d-none">Seu carrinho</h2>
+                        <div class="my-4">
+                            <div class="pedido">
+                                <div class="pedido">
+                                    <div class="pedido-abc py-3">
+                                        <div class="d-flex flex-column justify-content-center align-items-center">
+                                            <div class="fs-4 text-center lh-lg text-dark opacity-50 mb-3">Seu carrinho está
+                                                vazio. <br>Por favor clique
+                                                no botão abaixo para procurar <br>um produto e adicionar ao seu carrinho.</div>
+                                            <a href="/produto/?category=null&page=1&limit=6&orderby=p.id%20asc"
+                                                class="btn bg-orange fw-normal px-3 rounded-1 text-uppercase text-white">Procurar
+                                                produto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-lg-4 cart-price d-none">
+                        <div class="d-flex flex-column carrinho">
+                            <div class="header title text-white">
+                                <span class="fs-5 fw-bolder text-center p-3 d-block">Resumo</span>
+                            </div>
+                            <div class="bg-dark bg-opacity-10 p-4 card-body">
+                                <div class="precos">
+                                    <div class="valor d-flex justify-content-between">
+                                        <b>Preço</b>
+                                        <span class="pv">15.500,00 Kz</span>
+                                    </div>
+                                    <div class="delivery my-3 d-flex justify-content-between">
+                                        <b>Entrega</b>
+                                        <span class="dlv">1.500,00 Kz</span>
+                                    </div>
+                                    <div class="valor d-flex justify-content-between">
+                                        <b>IVA</b>
+                                        <span class="iva">1.500,00 Kz</span>
+                                    </div>
+                                    <hr class="hr">
+                                    <div class="text-orange total d-flex justify-content-between">
+                                        <b>Compra total</b>
+                                        <span class="ttl fw-bold">18.500,00 Kz</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-lg-3 card-body">
+                                <button class="btn bg-orange text-white  text-uppercase py-3 w-100">Confirmar encomenda</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <script>carregarCarrinho()</script>
+<%- include('../../includes/footer.ejs') -%>

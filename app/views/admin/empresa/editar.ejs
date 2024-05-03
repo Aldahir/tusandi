@@ -1,0 +1,88 @@
+<%- include('../includes/header') %>
+<%- include('../includes/sidebar') %>
+
+<div class="main-content">
+    <%- include('../includes/navbar') %>
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div id="content" class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumbs">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin">Início</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/empresa">Empresa</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"> Editar <%= data.title.toLowerCase() %></li>
+                        </ol>
+                    </nav>
+                </div>
+                
+                <div class="col-12 mt-5">
+                    <div class="title">
+                        <h1 class="h1 fw-bolder">Editar <%= data.title.toLowerCase() %></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class=" bg-white rounded p-5 mt-5">
+            <div class="col-xs-12 col-lg-12">
+                <form class="row" method="post" action="/admin/empresa/dados/editar/<%= data.id %>"> 
+                    <table class="table table-responsive">
+                        <tr>
+                            <td colspan="2" class=" border-0"><input name="title" class="form-control border-0 bg-transparent fw-bold fs-3 text-dark" value="<%= data.title %>"></td>
+                            <td class="d-flex flex-column border-0">
+                                <label for="dataCreated">Criado aos:</label>
+                                <%= data.dataCreated %> por <%= user.nome %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="text-form">
+                                <textarea name="valor" id="text-valor" class="form-control text-dark fs-6 border-0 h-auto bg-transparent" cols="30" rows="20" style="resize: none;"><%= data.valor %></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class=" border-0">
+                                <label for="estado">Estado</label>
+                                <select name="estado" id="form-estado" class="form-control bg-transparent">
+                                    <option value="0">Offline</option>
+                                    <option value="1" selected>Online</option>
+                                    <option value="2">Desactivado</option>
+                                </select>
+                            </td>
+                            <td class=" border-0">
+                                <label for="html_support">Suporte HTML</label>
+                                <select name="html_support" id="html_support" class="form-control bg-transparent">
+                                    <option value="0">Sim</option>
+                                    <option value="1" selected>Não</option>
+                                </select>
+                            </td>
+                            <td class=" border-0">
+                                <label for="site_anchor">Vinculado ao site</label>
+                                <select name="site_anchor" id="site_anchor" class="form-control bg-transparent">
+                                    <option value="0">Tusandi.com</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class=" border-0" style="text-align: center;">
+                                <button type="button" onclick="history.back()" class="btn btn-primary">Voltar</button>
+                            </td>
+
+                            <td class=" border-0" style="text-align: center;">
+                                <button type="submit" class="btn btn-success">Salvar</button>
+                            </td>
+
+                            <td class=" border-0" style="text-align: center;">
+                                <button type="reset" class="btn btn-danger">Limpar</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../includes/footer') %>

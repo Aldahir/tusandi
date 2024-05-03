@@ -1,0 +1,132 @@
+<%- include('../includes/header.ejs') %>
+
+    <main class="py-5 mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="breadcrumbs">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item small"><a href="/"><i class="small far fa-home"></i></a></li>
+                            <li class="breadcrumb-item small"><a href="/Usuario">Usuário</a></li>
+                            <li class="breadcrumb-item small active" aria-current="page"> Novo usuário </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="row frm">
+                <div class="col-lg-12 col-sm-12">
+                    <h3>Registar novo usuário</h3>
+                </div>
+
+                <div class="col-lg-12 col-sm-12">
+                    <div class="row mt-3">
+                        <!-- <h2 class="col-12 d-block mb-3 p-0">Dados do utilizador</h2> -->
+                        <div class="col-lg-4">
+                            <label class="form-label" for="nome">Nome completo</label>
+                            <input type="text" autocomplete="name" class="form-control mt-2" name="nome" id="nome" required aria-describedby="nome">
+                        </div>
+
+                        <div class="col-lg-4">
+                            <label class="form-label" for="nome">Sobrenome</label>
+                            <input type="text" required autocomplete="Sobrenome" class="form-control mt-2" name="sobrenome" id="sobrenome" aria-describedby="Sobrenome">
+                        </div>
+
+                        <div class="col-lg-4">
+                            <label class="form-label" for="username">Nome de utilizador</label>
+                            <input type="text" autocomplete="username" class="form-control mt-2" required name="username" id="username" aria-describedby="username">
+                        </div>
+                    </div>
+
+                    <div class="align-items-lg-baseline justify-content-center mt-3 row">
+                        <div class="col-lg-4">
+                            <label class="form-label" for="telefone">Telefone</label>
+                            <input type="phone" autocomplete="tel-country-code" class="form-control mt-2" required name="telefone" id="telefone" aria-describedby="telefone">
+                        </div>
+
+                        <div class="col-lg-4">
+                            <label class="form-label" for="email">E-mail</label>
+                            <input type="email" autocomplete="email" class="form-control mt-2" required name="email" id="email" aria-describedby="email">
+                        </div>
+
+                        <div class="col-lg-4 d-flex flex-column gap-lg-3">
+                            <span>Género</span>
+                            <div class="d-flex gap-lg-2 align-items-lg-center">
+                                <input type="radio" id="sexo-m" value="masculino" name="sexo" class="form-check"
+                                    checked> <label class="form-label mt-2" for="sexo-m">Masculino</label>
+                                <input type="radio" id="sexo" value="feminino" name="sexo" class="form-check"> <label
+                                    class="form-label mt-2" for="sexo">Feminino</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3 align-items-center">
+                        <div class="col-lg-4">
+                            <label class="form-label" for="dia">Data de nascimento</label>
+                            <input type="date" name="aniversario" required aria-labelledby="Aniversário" class="form-control mt-2" id="aniversario">
+                        </div>
+
+                        <div class="col-lg-4">
+                            <label class="form-label" for="provincia">Província</label>
+                            <select name="provincia" class="form-select mt-2" id="provincia">
+                                <option value="null">Escolha a sua província</option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <label class="form-label" for="municipio">Município</label>
+                            <select name="municipio" class="form-select mt-2" id="municipio">
+                                <option value="null">Escolha o seu município</option>
+                            </select>
+                        </div>
+
+                        <!-- <div class="col-lg-3">
+                            <label class="form-label" for="cpostal">Código Postal</label>
+                            <input type="text" name="cpostal" class="form-control mt-2" id="cpostal">
+                        </div> -->
+                    </div>
+
+                    <div class="row mt-3 align-items-center">
+                        <div class="col-lg-6">
+                            <label class="form-label" for="senha">Senha</label>
+                            <input type="password" required class="form-control mt-2" name="senha" id="senha">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="csenha">Confirmar senha</label>
+                            <input type="password" required class="form-control mt-2" name="csenha" id="csenha">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-lg-12">
+                            <label class="endereco" for="endereco">Endereço</label>
+                            <textarea name="endereco" id="endereco" cols="30" rows="3" style="resize: none" class="form-control mt-2"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-lg-12 d-flex align-items-center justify-content-center gap-lg-3">
+                            <button onclick="history.back()" class="bg-dark-blue btn px-4 text-white">Voltar</button>
+                            <button class="save bg-orange btn px-4 text-white btn-danger">Criar conta</button>
+                        </div>
+                        <input type="hidden" name="paisID" value="1">
+                        <input type="hidden" name="estado" value="1">
+                        <input type="hidden" name="usertipo" value="3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const frm = document.querySelector('.frm');
+        const btnSave = document.querySelector('.save');
+
+        btnSave.addEventListener("click", (e)=>{
+            novoUsuario()
+        })
+        getProvincia()
+    </script>
+
+    <%- include('../includes/footer.ejs') %>

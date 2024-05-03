@@ -1,0 +1,271 @@
+<%- include('../includes/header.ejs') -%>
+<% //console.log(servicos); %>
+
+<style>
+    .main-img {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        display: block;
+        height: clamp(225px, 416px, 526px);
+    }
+
+    .main-img>.principal {
+        /* height: 526px; */
+        position: absolute;
+        transition: transform .2s ease-in-out;
+    }
+
+    /* .img-list {width: 451px;} */
+
+    .img-list img {
+        width: calc(100% / 4);
+        opacity: .5
+    }
+
+    .img-list img:hover {
+        opacity: 1;
+        transition: opacity .2s ease-in-out;
+    }
+
+    .img-list img.active {
+        opacity: 1 !important;
+    }
+
+    .main-img>.principal:hover {
+        transform: scale(2);
+    }
+</style>
+
+<div class="container mb-5 py-5">
+    <div class="row">
+        <div class="d-flex justify-content-start" aria-label="breadcrumb">
+            <ol class=" breadcrumb">
+                <li class="breadcrumb-item"><a href="/" class="small text-decoration-none"><i class="small far fa-home"></i></a>
+                </li>
+                <li class="breadcrumb-item"><a href="/servicos/?page=0&limit=6" class="small text-decoration-none">Serviços</a></li>
+                <li class="breadcrumb-item"><a href="/servicos/?category=<%= servicos.categ_id %>&page=0&limit=6"
+                        class="small text-decoration-none">
+                        <%= servicos.categ_nome %>
+                    </a></li>
+                <li class="small breadcrumb-item" style="margin-top: 2px;" aria-current="page">
+                    <%= servicos.nome %>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 col-md-5">
+            <div class="smoothproducts">
+                
+                <div class="main-img">
+                    <img src="<%= servicos.imagem %>" alt="<%= servicos.nome %>" class="principal img-fluid fit">
+                </div>
+                
+                <div class="img-list d-flex flex-row "></div>
+            </div>
+        </div>
+        <div class="col-lg-5 col-sm-12 col-md-5">
+            <div class="row detalhes-produto">
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2><%= servicos.nome %></h2>
+                        <% if(servicos.estado == 1){ %><span class="badge bg-success small">Disponível</span> <% } else { %><span class="badge bg-danger small">Indisponível</span>  <% } %>
+                    </div>
+                </div>
+
+                <hr class="hr">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+                    <span class="fw-semibold">Código: </span>
+                    <span class="code"><%= servicos.codigo %></span>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+                    <span class="fw-semibold">Avaliação:</span>
+                    <div class="avaliacao">
+                        <i class="fa text-orange fa-star"></i>
+                        <i class="fa text-orange fa-star"></i>
+                        <i class="fa text-orange fa-star"></i>
+                        <i class="fa text-orange fa-star-half"></i>
+                        <i class="far text-opacity-50 text-dark fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-12 col-sm-12 mb-3">
+                    <span class="fw-semibold mb-lg-2 d-flex d-none">Quantidade:</span>
+                    <div class="flex-nowrap flex-row input-group d-none">
+                        <button onclick="decreaseQTY(document.getElementById('qty'), <%= servicos.preco %>)" class="d-none btn btn-outline-secondary">-</button>
+                        <input type="number" class="form-control text-center w-100" name="qtd" min="1" max="999"
+                            value="1" maxlength="999" id="qty" aria-label="Quantidade">
+                        <button onclick="increaseQTY(document.getElementById('qty'), <%= servicos.preco %>)" class="d-none btn btn-outline-secondary">+</button>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <span class="fw-semibold d-none">Disponível:</span> <span class="peso"><%= servicos.qtd %> <%= servicos.unidade %></span>
+                </div>
+
+                <div class="mb-3">
+                    <span class="fw-semibold d-none">Preço:</span>
+                    <div class="d-flex gap-1 align-items-baseline">
+                        <span class="small text-uppercase text-dark text-opacity-50"></span>
+                        <span class="preco display-6 fw-bold text-orange">Sob consulta</span>
+                    </div>
+                </div>
+                <hr class="hr">
+                <div class="my-3">
+                    <div class="d-flex gap-3 align-items-baseline">
+                        <button onclick="reservarServico(<%= servicos.id %>, document.querySelector('#qty').value, user_id(), 0, 2)" class="bg-dark-blue btn px-4 text-white">Reservar</button>
+                        <a href="<%= empresa.contactos.whatsapp %>/?text=https://tusandi.com" class="save bg-orange btn px-4 text-white btn-danger">Solicitar contacto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-sm-12 col-md-3">
+            <div class="d-flex flex-column">
+                <div class="bg-black bg-opacity-10 rounded p-3 w-100">
+                    <h3 class="fw-semibold m-0 fs-6">Modo de pagamento</h3>
+                </div>
+                <a href="javascript:void(0);" class="text-decoration-none d-block border border-1 mt-2 rounded payment-method p-3" id="payment-method"></a>
+            </div>
+        </div>
+
+        <div class="col-lg-9 col-md-7 mt-lg-5 col-sm-12">
+            <ul class="nav nav-pills flex-nowrap w-50 gap-3 nav-fill">
+                <li class="nav-item"><a href="#5p" class="nav-link active" aria-current="page" data-bs-toggle="tab">Descrição dos serviços</a></li>
+                <li class="nav-item"><a href="#7p" class="nav-link" data-bs-toggle="tab">Comentário e opiniões</a></li>
+            </ul>
+            <div class="tab-content mt-5">
+                <div class="tab-pane active mt-5" id="5p">
+                    <h3>Detalhes do serviço</h3>
+                    <p><%= servicos.descricao %></p>
+                </div>
+                <div class="tab-pane mt-5" id="7p">
+                    <div class="coments">
+                        <!-- <div class="d-flex p-lg-4">
+                            <div class="d-flex me-3">
+                                <div class="imagem" style="width: 60px;">
+                                    <img src="https://dummyimage.com/300x300/bcefdd" class="img-fluid rounded-circle"
+                                        alt="Avatar Aldair Cajicua nos comentarios do produto">
+                                </div>
+                            </div>
+
+                            <div class="conteudo flex-column d-flex gap-lg-2">
+                                <div class="nome">
+                                    <span class="fw-semibold">Aldair Cajicua</span>
+                                </div>
+
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus dolores nobis
+                                    pariatur distinctio? Cupiditate officia modi quaerat placeat eius ullam, autem
+                                    facilis? Deserunt fugit veniam, reiciendis veritatis fugiat voluptates excepturi!
+                                </p>
+                                <div class="actions">
+                                    <ul class="nav gap-lg-0 gap-2">
+                                        <li><a href="" class="text-decoration-none me-lg-3"><i
+                                                    class=" far fa-heart"></i> Gostar</a></li> -->
+                                        <!-- <li><a href="" class="text-decoration-none me-lg-3"><i
+                                                    class=" far fa-share"></i> Partilhar</a></li> -->
+                                        <!-- <li><a href="" class="text-decoration-none"><i class=" far fa-comment"></i>
+                                                Responder</a></li> -->
+                                    <!-- </ul>
+                                </div>
+                            </div>
+                        </div>-->
+                    </div> 
+
+                    <hr class="hr my-4">
+
+                    <form action="" class="form-group">
+                        <div class="mt-3"><input type="text" name="comment-name" class="form-control" id="comment-name"
+                                placeholder="Nome completo"></div>
+                        <div class="mt-3"><input type="email" name="comment-email" class="form-control"
+                                id="comment-email" placeholder="Seu e-mail"></div>
+                        <div class="mt-3"><textarea name="comment" id="comment" cols="30" rows="8"
+                                class="form-control"></textarea></div>
+                        <div class="mt-3 justify-content-end d-flex"><button type="submit"
+                                class="align-items-center bg-orange btn d-flex fw-normal justify-content-center px-4 rounded-1 text-uppercase text-white">Comentar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-5 col-sm-12">
+            <div class="category-container">
+                <ul class="navbar-nav service-categoria">
+                    <li class="nav-item bg-black bg-opacity-10 rounded p-3 w-100">
+                        <h3 class="fw-semibold m-0 fs-6">Categorias</h3>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const imge = document.querySelector('.principal.fit');
+    const imgList = document.querySelectorAll(".img-list img");
+    const container = document.querySelector('.main-img');
+
+    imgList.forEach((i, j) => {
+        if (j == 0) {
+            let x = document.getElementById("previous") ? null : () => {
+                document.getElementById("previous")
+                x.classList.add("disabled");
+                x.cursor = "not-allowed";
+                x.setAttribute("aria-disabled", "true");
+            };
+        }
+        i.addEventListener("click", () => {
+            imgList.forEach(j => j.classList.remove("active"));
+            i.classList.add("active");
+            imge.src = i.src;
+        });
+    })
+
+    imge.addEventListener("click", () => {
+        const d = document.createElement("div")
+        const p = document.createElement("div")
+
+        d.setAttribute('id', 'attr')
+        d.classList.add("attr", "bg-dark", "bg-opacity-75", "w-100", "d-flex", "h-100", "m-auto", "z-3");
+        p.setAttribute("style", "width: 50%; margin:auto; padding-top: 35px");
+
+        p.innerHTML = `<div class="content w-100 text-end">
+    <a href="javascript:closeModal();" class="fa fa-close text-white text-decoration-none fw-normal display-4"></a>
+        <a onclick="slideControl('previous');" id="previous" class="bottom-0 opacity-25 d-flex h-100 m-auto ms-5 position-absolute start-0 text-decoration-none top-0" style="width:67px">
+            <i class="d-flex display-3 fa fa-chevron-left justify-content-center my-auto text-white" style="width:60px;height:60px;"></i>
+        </a>
+        <div class="d-flex">
+            <img src="${imge.src}" class="img-fluid">
+        </div>
+        <a onclick="slideControl('next');" class="bottom-0 d-flex end-0 h-100 opacity-25 m-auto me-4 position-absolute text-decoration-none top-0" style="width:67px">
+            <i class="d-flex display-3 fa fa-chevron-right justify-content-center my-auto text-white" style="width:60px;height:60px;"></i>
+        </a>
+    </div>`;
+
+        container.append(d, p);
+        d.append(p);
+    })
+
+    let indiceActual = 0;
+
+    // document.getElementById("previous").addEventListener("click", () => { });
+
+    function mostrar(index) {
+        imgList.forEach((element, i) => {
+            element.style.display = i === index ? 'block' : 'none'
+        })
+    }
+
+        
+    window.addEventListener("DOMContentLoaded", () => {
+        document.querySelector(".smoothproducts");
+        getactivepaymentmethod();
+        getCategoriaServicos()
+    })
+</script>
+
+<%- include('../includes/footer.ejs') -%>

@@ -1,0 +1,172 @@
+<%- include('../includes/header.ejs') -%>
+
+<div class="content">
+    <div class="container-fluid position-relative"
+        style="background-attachment: fixed; background-image: url(https://iutsi.edu.ve/wp-content/uploads/2022/09/group-of-college-students-collaborating-on-project-in-library.jpg);background-position: 0px 75%;background-repeat: no-repeat;background-size: cover;">
+        <div class="position-absolute overlay start-0 end-0 top-0 bottom-0"></div>
+        <div class="row z-3 position-relative py-5">
+            <div class="col-lg-12 py-3 text-white text-center">
+                <div class="mt-5 pt-5">
+                    <h1 class="fw-bolder display-4">Contactos</h1>
+                </div>
+                <div class="mt-4 mb-5 pb-5 m-auto d-flex justify-content-center"
+                    aria-label="breadcrumb">
+                    <ol class=" breadcrumb text-white">
+                        <li class="breadcrumb-item"><a href="" class="text-decoration-none text-white"><i class="small far fa-home"></i></a></li>
+                        <li class="breadcrumb-item" aria-current="page">Contactos</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 py-5">
+        <div class="row">
+            <div class="col-lg-12 bg col-md-12">
+                <h4 class="lh-lg mb-lg-5 mb-3 text-center">
+                    Entre em contato conosco para mais informações sobre nossos serviços e como podemos atender às suas necessidades.
+                </h4>
+                <div class="container">
+                    <div class="row">
+                        <section id="info-contactos" class="col-lg-5 col-md-12 col-sm-12 d-flex flex-column mb-4 mb-lg-0">
+                            <div class="contacts d-flex flex-column justify-content-start py-5 text-lg-start">
+                                <div class="align-items-start d-flex flex-lg-column flex-row gap-3 justify-content-start mb-2">
+                                    <i class="far fa-phone text-orange mt-1"></i>
+                                    <span
+                                        class="d-flex flex-row fw-lighter gap-2 justify-content-center align-items-center">
+                                        <a href="tel:<%= empresa.contactos.tel01 %>" class="text-dark text-decoration-none fw-lighter">
+                                            <%= empresa.contactos.tel01 %>
+                                        </a>
+                                        <div class="d-inline-block text-orange separator"> | </div>
+                                        <a href="tel:<%= empresa.contactos.tel02 %>" class="text-dark text-decoration-none fw-lighter">
+                                            <%= empresa.contactos.tel02 %>
+                                        </a>
+                                    </span>
+                                </div>
+
+                                <div class="d-flex gap-2 flex-column ">
+                                    <div
+                                        class="d-flex me-4 gap-2 footer-email justify-content-start align-items-center">
+                                        <i class="far fa-envelope text-orange"></i>
+                                        <span class="fw-lighter">
+                                            <a href="mailto:<%= empresa.contactos.email %>"
+                                                target="_blank" class="text-dark text-decoration-none fw-lighter">
+                                                <%= empresa.contactos.email %>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div
+                                        class="d-flex gap-2 footer-address justify-content-center justify-content-lg-start align-items-lg-start">
+                                        <i class="fa fa-location-dot text-orange"></i>
+                                        <span class="fw-lighter">
+                                            <%= empresa.endereco %>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="imagem text-center">
+                                <img src="https://dummyimage.com/800x500/FF5722&text=%20" class="img-fluid rounded-3">
+                            </div>
+                        </section>
+
+                        <section id="frm-contactos" class="bg-white col-lg-7 col-md-12 col-sm-12 mt-lg-0 mt-5">
+                            <div class="container">
+                                <div class="px-0 px-lg-4 rounded-4 row shadow-lg shadow-sm">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 p-4 p-lg-4">
+                                        <div class="title mt-lg-4">
+                                            <h3 class="fw-bolder titulo text-azul-escuro">Envia-nos uma mensagem</h3>
+                                        </div>
+
+                                        <form action="" method="post" class="row pt-5 contato">
+                                            <p>Prometemos responder o mais breve possível.</p>
+                                            <div class="col-lg-12 mb-3">
+                                                <input type="text" placeholder="Nome completo" required
+                                                    class="form-control rounded" name="fullname" id="fullname">
+                                            </div>
+                                            <div class="col-lg-12 mb-3">
+                                                <div class="row">
+                                                    <div class="col-lg-7">
+                                                        <input type="email" placeholder="E-mail" required
+                                                            class="form-control rounded" name="email" id="email">
+                                                    </div>
+
+                                                    <div class="col-lg-5 mt-lg-0 mt-3">
+                                                        <input type="phone" placeholder="Telefone" required maxlength="16"
+                                                            class="form-control rounded" name="phone" id="phone">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12 mb-3">
+                                                <select name="subject" required
+                                                    class="form-control form-control-select form-select rounded"
+                                                    id="subject">
+                                                    <option>Escolha o assunto</option>
+                                                    <option value="Emprego e colaboração">Emprego e colaboração</option>
+                                                    <option value="Parcerias e patrocínios">Parcerias e patrocínios</option>
+                                                    <option value="Preços e entrega">Preços e entrega</option>
+                                                    <option value="Produtos e serviços">Produtos e serviços</option>
+                                                    <option value="Sobre a Tusandi">Sobre a Tusandi</option>
+                                                    <option value="Outros">Outros</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-lg-12 mb-3">
+                                                Mensagem
+                                                <textarea name="message" required class="form-control rounded no-resize mt-3"
+                                                    cols="10" rows="7" id="message"></textarea>
+                                            </div>
+
+                                            <div class="col-lg-12 d-flex justify-content-end align-items-end mt-lg-3">
+                                                <button type="submit" id="sbt"
+                                                    class="btn bg-orange text-uppercase text-white d-flex fw-normal justify-content-center align-items-center px-3 fs-6">Enviar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../parts/map.ejs") -%>
+
+<script>
+    fr = document.querySelector('form.contato');
+    sbt = document.querySelector('#sbt');
+
+    let nom =document.querySelector('[name=fullname]');
+    let mail =document.querySelector('[name=email]');
+    let sbj =document.querySelector('[name=subject]');
+    let tel =document.querySelector('[name=phone]');
+    let msg =document.querySelector('[name=message]');
+    
+    fr.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        return false;
+    });
+    let v =0;
+    
+    sbt.addEventListener("click", (e)=>{
+        if (nom.value == '') {toast("Por favor preencha os campos em branco", 1); nom.focus()}
+        else if (mail.value == '') {toast("Por favor preencha os campos em branco", 1); mail.focus()}
+        else if (sbj.value == '') {toast("Por favor preencha os campos em branco", 1); sbj.focus()}
+        else if (msg.value == '') {toast("Por favor preencha os campos em branco", 1); msg.focus()}
+        else if (tel.value == '') {
+            if(tel.value.length < 9){
+                toast("Por favor preencha os campos em branco", 1); tel.focus()
+            }
+            
+            toast("Por favor preencha os campos em branco", 1); tel.focus()
+        } else {
+            request('/api/controller/contacto', {nome: nom.value, email:mail.value, telefone:tel.value, assunto:sbj.value, mensagem:msg.value}).then(r=>{toast(r.message); 
+                sbj.value = '';tel.value = '';msg.value = '';nom.value = '';mail.value = ''}).catch(err=>toast(err, 1))
+        }
+    })
+</script>
+<%- include ('../includes/footer.ejs') -%>

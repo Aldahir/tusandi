@@ -1,0 +1,59 @@
+<%- include('../includes/header') %>
+<%- include('../includes/sidebar') %>
+<div class="main-content">
+    <%- include('../includes/navbar') %>
+    <div class="pb-8 pt-5 pt-md-8"></div>
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col-lg-2">
+                <ul class="navbar-nav section-name">
+                    <li class="nav-item fw-bold bg-black px-4 py-3 mb-3 bg-opacity-10 rounded">Secções na página</li>
+                </ul>
+            </div>
+            <div class="col-lg-10">
+                <iframe id="iframe" width="100%" style="max-width: 100%!important"  referrerpolicy="no-referrer-when-downgrade" loading="lazy" height="600" allowfullscreen="" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    id = new URL(location.href).pathname.split('/')[4];
+
+    var iframe = document.querySelector('iframe');
+    fetch('/admin/api/v1.0.1/paginas/ver/'+id).then(r=>r.json()).then(s=>{
+        
+        iframe.contentDocument.body.innerHTML = s.content
+
+        var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+        var links = iframeDocument.getElementsByTagName('a');
+        var section = iframeDocument.getElementsByTagName('section');
+        for (var i = 0; i < links.length; i++) {
+            links[i].onclick = function (event) {
+                event.preventDefault(); // Prevent default action of link
+            };
+            links[i].style.pointerEvents = 'none'; // Disable pointer events on link
+            // links[i].style.color = 'gray'; // Change color to indicate link is disabled (optional)
+        }
+        
+        for (var i = 0; i < section.length; i++) {
+            document.querySelector('.section-name').innerHTML += `<li class="nav-item"><a href="javascript:navigateToId('${section[i].id}')" class="py-2 ps-4 nav-link">${section[i].id.substring(0, 1).toUpperCase()+section[i].id.substring(1, section[i].id.length).toLowerCase().replace("-", " ")}</a></li>`;
+            section[i].classList.add('position-relative');
+            section[i].addEventListener('mouseover', (e)=>{
+                iframeDocument.querySelector('.editar').classList.remove('d-none')
+            })
+            section[i].addEventListener('mouseleave', (e)=>{
+                iframeDocument.querySelector('.editar').classList.add('d-none')
+            })
+            section[i].innerHTML += `<a href="javascript:editsection('${section[i].id}')" class="bg-dark bg-opacity-25 border border-2 border-white bottom-0 editar end-0 m-auto position-absolute rounded start-0 text-decoration-none top-0 d-none" style="width:150px; height:50px"><div class="text-white d-flex gap-4 justify-content-center align-items-center" style="height:50px"><i class="fa fa-pen"></i><span class="fw-bold text-white">Editar</span></div> </a>`
+        }
+        // document.querySelectorAll('.editar').forEach(s=>{console.log(s);s.setAttribute('style', 'display:none')})
+
+
+    }).catch(err=>console.log(err))
+
+    
+</script>
+
+<%- include('../includes/footer') %>

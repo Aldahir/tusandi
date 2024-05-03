@@ -1,0 +1,22 @@
+<section id="servicos001" class="d-lg-flex">
+    <div class="container bg-white text-dark-blue px-lg-5 p-3 py-lg-4">
+        <div class="row py-lg-5 py-3 text-lg-start text-center">
+            <div class="col-lg-4 col-sm-12 col-md-4 text-lg-start text-center">
+                <h3 class="fw-bolder text-dark-blue text-lg-start text-center">Os nossos serviços</h3>
+            </div>
+            <div class="col-lg-5 col-sm-12 col-md-4 my-lg-auto text-lg-start text-center">
+                <p class="m-lg-0 d-lg-flex d-md-flex align-items-center d-none text-gray card-detail-text small">Explore mais de 150.000 cursos onlines.</p>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12 d-flex justify-content-end text-center text-lg-end">
+                <a href="/servicos/?page=0&limit=6" style="width: 200px; height: 42px !important; font-size: 0.9rem;" class="align-items-center bg-orange btn d-flex fw-normal justify-content-center px-3 rounded-1 text-uppercase text-white">Ver mais</a>
+            </div>
+        </div>
+
+        <div class="row servicos-lista mb-lg-5"></div>
+    </div>
+</section>
+<script>
+    document.addEventListener("readystatechange", event=>{
+        if (event.target.readyState === "complete") getAllServices(0,3)
+    });
+</script>

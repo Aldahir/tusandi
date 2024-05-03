@@ -1,0 +1,55 @@
+<%- include('../includes/header') %>
+<%- include('../includes/sidebar') %>
+<div class="main-content">
+    <%- include('../includes/navbar') %>
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div id="content" class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumbs">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/dashboard">Início</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"> Produtos </li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h1 class="h1 fw-bolder">Produtos</h1>
+                        <a href="/admin/dashboard" class="btn">Novo produto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <table class="table table-responsive header fs-6">
+                    <thead>
+                        <tr>
+                            <th width="5%">Código</th>
+                            <th width="40%"><a href="">Nome</a></th>
+                            <th>Preço</th>
+                            <th>Código</th>
+                            <th style="text-align:center">Estado</th>
+                            <th style="text-align:center">#Acção</th>
+                        </tr>
+                    </thead>
+                    <tbody class="body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('readystatechange', (ev) => {
+        if (ev.target.readyState == 'complete') {
+            getProdutos();
+        }
+    })
+</script>
+<%- include('../includes/footer') %>

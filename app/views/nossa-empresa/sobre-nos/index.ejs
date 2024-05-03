@@ -1,0 +1,116 @@
+<%- include('../../includes/header.ejs') -%>
+
+<section>
+    <div class="container-fluid position-relative" style="background-attachment: fixed; background-image: url(https://universidadducens.edu.mx/wp-content/uploads/2021/02/training-5069846_1920-1.jpg);background-position: 0px top;background-repeat: no-repeat;background-size: cover;">
+        <div class="position-absolute overlay start-0 end-0 top-0 bottom-0"></div>
+        <div class="row z-3 position-relative py-5">
+            <div class="col-lg-12 py-3 text-white text-center">
+                <div class="mt-5 pt-5">
+                    <h1 class="fw-bolder display-4">Sobre nós</h1>
+                </div>
+                <div class="mt-4 mb-5 pb-5 m-auto d-flex justify-content-center" aria-label="breadcrumb">
+                    <ol class=" breadcrumb text-white">
+                        <li class="breadcrumb-item"><a href="/" class="text-decoration-none text-white"><i class="small far fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="/nossa-empresa/sobre-nos/" class="text-decoration-none text-white">Nossa empresa</a></li>
+                        <li class="breadcrumb-item" aria-current="page">Sobre nós</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mt-5 py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h4 data-id="1" class="position-relative pseudo pseudo-center fw-bold mb-5 about-title"></h4>
+                <p data-id="1" class="my-4 about-text"></h4>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark bg-opacity-10 mt-lg-5">
+        <div class="row p-5 align-items-top justify-content-start ">
+            <div class="col-lg-12 col-sm-12 col-md-4 d-flex">
+                <div class="text-dark d-flex flex-column justify-content-center p-4">
+                    <h2 class="heading-title-main fs-3 fw-bolder text-center">Valores</h2>
+                    <ul class="d-flex flex-nowrap my-5 flex-row gap-3 nav text-center">
+                        <li class="nav-item">
+                            <div class="d-flex flex-column">
+                                <h4 data-id="2" class="fw-bold fs-6 cb01-title"></h4>
+                                <div data-id="2" class="text small mt-1 cb01-text"></div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="d-flex flex-column">
+                                <h4 data-id="3" class="fw-bold fs-6 cb02-title"></h4>
+                                <div data-id="3" class="text small mt-1 cb02-text"></div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="d-flex flex-column">
+                                <h4 data-id="4" class="fw-bold fs-6 cb03-title"></h4>
+                                <div data-id="4" class="text small mt-1 cb03-text"></div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="d-flex flex-column">
+                                <h4 data-id="5" class="fw-bold fs-6 cb04-title"></h4>
+                                <div data-id="5" class="text small mt-1 cb04-text"></div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="d-flex flex-column">
+                                <h4 data-id="6" class="fw-bold fs-6 cb05-title"></h4>
+                                <div data-id="6" class="text small mt-1 cb05-text"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-sm-12 col-md-4 d-flex mt-4">
+                <div class="text-dark d-flex flex-column justify-content-center p-4">
+                    <h2 data-id="7" class="heading-title-main fs-3 fw-bolder text-center cb06-title"></h2>
+                    <p data-id="7" class="text-center mt-3 small cb06-text"></p>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-sm-12 col-md-4 d-flex mt-4">
+                <div class="text-dark d-flex flex-column justify-content-center p-4">
+                    <h2 data-id="8" class="heading-title-main mt-3 fs-3 fw-bolder text-center cb07-title"></h2>
+                    <p data-id="8" class="text-center small cb07-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container my-5 pt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="https://dummyimage.com/800x500/FF5722&text=%20" class="img-fluid rounded-3">
+            </div>
+            <div class="col-md-6">
+                <p>Em 2022, a Tusandi expandiu sua atuação para o mercado do entretenimento, com a abertura de um bar em Luanda. O bar rapidamente se tornou um sucesso, atraindo um público jovem e vibrante.</p>
+
+                <p>Ainda em 2022, a Tusandi diversificou ainda mais seus negócios, ingressando nos setores de pesca e pastelaria. A empresa investe na pesca artesanal e na produção de pastéis de alta qualidade, utilizando ingredientes frescos e receitas tradicionais angolanas.</p>
+
+                <p>Em 2023, a Tusandi consolidou sua posição como uma empresa de referência no mercado angolano. A empresa conta com uma equipe de profissionais qualificados e experientes, e está comprometida com a qualidade dos seus serviços e com a satisfação dos seus clientes.
+
+                <p>A Tusandi tem planos ambiciosos para o futuro. A empresa pretende expandir sua atuação para outras áreas do mercado angolano, como o turismo e a agricultura. A Tusandi também está comprometida com o desenvolvimento sustentável de Angola e com o bem-estar da comunidade.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    renderParts('[data-id="1"]','.about');
+    renderParts('[data-id="2"]','.cb01');
+    renderParts('[data-id="3"]','.cb02');
+    renderParts('[data-id="4"]','.cb03');
+    renderParts('[data-id="5"]','.cb04');
+    renderParts('[data-id="6"]', '.cb05');
+    renderParts('[data-id="7"]', '.cb06');
+    renderParts('[data-id="8"]', '.cb07');
+</script>
+
+<%- include('../../includes/footer.ejs') -%>

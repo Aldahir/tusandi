@@ -1,0 +1,57 @@
+{
+  "name": "tusandi",
+  "version": "1.0.1",
+  "main": "app.js",
+  "author": "Aldair Cajicua <aldaircajicua@gmail.com> (https://github.com/aldaircajicua)",
+  "license": "ISC",
+  "description": "A Tusandi é uma empresa angolana fundada em 2021 por um grupo de jovens empreendedores angolanos. A empresa iniciou suas atividades no ramo da construção civil, com foco em projetos residenciais e comerciais.",
+  "scripts": {
+    "run": "nodemon index.js",
+    "test": "ng test"
+  },
+  "dependencies": {
+    "app-root-path": "^3.1.0",
+    "body-parser": "1.20.2",
+    "cookie-parser": "1.4.6",
+    "crypto": "^1.0.1",
+    "dotenv": "^6.2.0",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "express-fileupload": "1.4.3",
+    "express-session": "1.18.0",
+    "mysql": "2.18.1",
+    "nodemailer": "^6.9.13",
+    "nodemon": "3.1.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "eslint": "^5.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aldahir/tusandi.git"
+  },
+  "keywords": [
+    "school",
+    "education",
+    "estore",
+    "elearning",
+    "training",
+    "curso",
+    "aulas",
+    "vendas",
+    "fish",
+    "bakery",
+    "party",
+    "brewery",
+    "store",
+    "online",
+    "net",
+    "student",
+    "estudos"
+  ],
+  "bugs": {
+    "url": "https://github.com/Aldahir/tusandi/issues"
+  },
+  "homepage": "https://github.com/Aldahir/tusandi#readme"
+}

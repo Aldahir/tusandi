@@ -1,0 +1,159 @@
+<%- include('../includes/header.ejs') -%>
+
+    <section class="mb-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <!-- <input type="hidden" name="cid" value="" id="cid"> -->
+                <div class="col-12 mb-4">
+                    <nav aria-label="breadcrumbs">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item small"><a href="/"><i class="small far fa-home"></i></a></li>
+                            <li class="breadcrumb-item small active" aria-current="page"> Serviços </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="filter">
+                        <div class="d-flex flex-column">
+                            <h4 class="categ-nome">Categoria</h4>
+                            <div class="categ-text">Encontre os serviços <b>Categoria</b> para solucionar sua necessidade</div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-5">
+                            <div class="align-items-center controls d-flex gap-lg-4 justify-content-center">
+                                <select name="entrega" id="delivery" class="form-select py-2 border border-2 rounded">
+                                    <option value="">Tipo de serviço</option>
+                                    <option value="1">Com entrega</option>
+                                    <option value="0">Sem entrega</option>
+                                </select>
+
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle text-decoration-none py-2 px-4 border border-2 rounded" data-bs-toggle="dropdown" aria-expanded="false"  data-bs-auto-close="outside">Orçamento</a>
+                                    <form action="" method="get">
+                                        <ul class="dropdown-menu p-4 flex-column" style="width: 360px;">
+                                                <div class="d-flex form-group flex-nowrap gap-2">
+                                                    <input type="radio" onchange="disableInput(document.querySelector('#form-valor'))" class="form-check" name="valor" value="<50" id="orc-50">
+                                                    <div class="d-flex gap-2">
+                                                        Preço de abaixo de <b>Kz 50.000,00</b>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex form-group gap-2">
+                                                    <input type="radio" onchange="disableInput(document.querySelector('#form-valor'))" class="form-check" name="valor" value=">100" id="orc-100">
+                                                    Preço acima de <b>Kz 100.000,00</b>
+                                                </div>
+
+                                                <div class="d-flex form-group flex-column gap-2">
+                                                    <span class="w-100 d-flex gap-2"><input type="radio" class="form-check" name="valor" value="custom" id="orc-custom">Personalizado</span>
+                                                    <input type="number" placeholder="5000" disabled name="custom" id="form-valor" class="mt-1 mb-3 form-control">
+                                                </div>
+                                                <div class="d-flex form-group gap-4">
+                                                    <button class="btn bg-dark-blue w-50 text-white">Limpar</button>
+                                                    <button type="submit"
+                                                        class="btn w-50 bg-orange text-white">Enviar</button>
+                                                </div>
+                                        </ul>
+                                    </form>
+                                </div>
+                            </div>
+                            <script>
+                                const f = {
+                                    b: document.querySelector('#orc-50'),
+                                    u: document.querySelector('#orc-100'),
+                                    p:document.querySelector('#orc-custom'),
+                                    v:document.querySelector('#form-valor'),
+                                }
+                                listener(f.p, (e)=>{
+                                    if(e.target.checked === false){console.log(f.p); disableInput(f.v) } 
+                                    if(e.target.checked === true) { f.v.removeAttribute('disabled') }
+                                }, "change") 
+                                disableInput=(e) => e.setAttribute('disabled', "disabled") 
+                            </script>
+                            <div class="d-flex align-items-center gap-2 justify-content-between">
+                                <div class="buttons gap-2 d-flex">
+                                    <button id="lines" type="button"
+                                        class="btn btn-light border p-2 rounded fa fa-bars"></button>
+                                    <button id="grid" type="button"
+                                        class="btn btn-light border p-2 rounded fa fa-grip"></button>
+                                </div>
+                                <div class="sort d-flex bg-light gap-lg-1 border rounded align-items-center">
+                                    <i type="button" class="btn fa fa-bars-staggered"></i>
+                                    <select name="order-by" id="order-by"
+                                        class="form-select bg-transparent rounded-0 border-0">
+                                        <option disabled>Filtrar por:</option>
+                                        <option value="relevance" selected>Mais popular</option>
+                                        <option value="novelty">Novo</option>
+                                        <option value="name-asc">Nome (ascendente)</option>
+                                        <option value="name-desc">Nome (descendente)</option>
+                                        <option value="price-asc">Preço (mais barato)</option>
+                                        <option value="price-desc">Preço (mais caro)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="mt-5 row" id="recomended">
+                <div class="col-lg-9 col-md-9 col-sm-12">
+                    <div class="row servicos-lista"></div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <ul class="navbar-nav service-categoria">
+                        <li class="nav-item bg-black bg-opacity-10 mb-2 rounded p-3 w-100">
+                            <h3 class="fw-semibold m-0 fs-6">Categorias</h3>
+                        </li>
+
+                    </ul>
+
+                    <div class="advert mt-4">
+                        <small>Publicidade</small>
+                        <img src="/img/advert.jpg" class="rounded img-fluid" alt="">
+                    </div>
+                </div>
+            </section>
+            <hr class="hr my-4">
+
+            <section class="mt-5 row">
+                <div class="paginacao">
+                    <nav aria-label="Page navigation" class="d-flex justify-content-center">
+                        <ul class="pagination m-0">
+                            <li class="page-item"><a class="page-link" href="/?page=0"><< </a>
+                            </li>
+                            <li class="page-item"><a class="page-link active" href="/?page=1">1</a></li>
+                            <li class="page-item"><a class="page-link" href="/?page=2">2</a></li>
+                            <li class="page-item"><a class="page-link" href="/?page=3">3</a></li>
+                            <li class="page-item"><a class="page-link" href="/?page=4">4</a></li>
+                            <li class="page-item"><a class="page-link" href="/?page=5">5</a></li>
+                            <li class="page-item"><a class="page-link" href="/?page=6">>></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+        </div>
+    </section>
+    <script>
+        let d = document.querySelector('#delivery')
+
+        listener(d, (e)=>{
+            filterService(document.querySelector('#order-by').value, d.options[e.target.selectedIndex].value);
+        },"change")
+
+        document.querySelector('#order-by').addEventListener('change', (e)=>{
+            console.log(d.options[d.selectedIndex].value)
+            filterService(e.target.value, null);
+        })
+
+        document.addEventListener("readystatechange", (e) => {
+            if (e.target.readyState === "complete") {
+                getAllServices(gQURL(location.href, "page"), gQURL(location.href, "limit"));
+                getCategoriaServicos()
+            }
+        })
+    </script>
+    <%- include('../includes/footer.ejs') -%>

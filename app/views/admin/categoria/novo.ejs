@@ -1,0 +1,70 @@
+<%- include('../includes/header') %>
+<%- include('../includes/sidebar') %>
+<div class="main-content">
+    <%- include('../includes/navbar') %>
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div id="content" class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumbs">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin">Início</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/categoria"> Categoria </a></li>
+                            <li class="breadcrumb-item active" aria-current="page"> Nova categoria </li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class="col-12">
+                    <div class="title">
+                        <h1 class="h1 fw-bolder">Nova categoria</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <form action="/admin/api/v1.0.1/categoria/novo" method="post" enctype="multipart/form-data" class="row mt-5 p-5 bg-white rounded" id="insert">
+            <div class="col-xl-4">
+                <div class="img-preview rounded">
+                    <img src="/img/default_replace_photo.png" onclick="document.getElementById('imgPath').click()" alt="" class="img-fluid img-recept rounded">
+                </div>
+                <div class="mt-3"><input style="left: -12000px;" type="file" name="imgPath" id="imgPath" class="position-absolute opacity-0 form-control"></div>
+            </div>
+            <div class="col-xl-8">
+                <div class="row">
+                    <div class="col-xl-12 mt-3">
+                        <label for="nome">Nome da categoria:</label>
+                        <input class="form-control" name="nome" type="text">
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                        <label for="tipo">Tipo:</label>
+                        <select class="form-select" name="tipo" id="tipo">
+                            <option value="null" selected>Escolha o tipo de categoria</option>
+                            <option value="1">Produto</option>
+                            <option value="2">Serviço</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                        <label for="estado">Activado:</label>
+                        <div class="d-flex gap-3 justify-content-center align-items-center">
+                            <input type="radio" class="form-check form-check-inline" name="estado" value="1" checked id="eYes"> Sim
+                            <input type="radio" class="form-check form-check-inline" name="estado" value="0" id="eNo"> Não
+                        </div>
+                    </div>
+                    <div class="col-lg-12 mt-3">
+                        <label for="descricao">Descrição:</label>
+                        <textarea class="form-text form-control" name="descricao"></textarea>
+                    </div>
+                    <div class="col-lg-12 col-xl-12 d-flex justify-content-between mt-3">
+                        <a class="link" href="/admin/produto/">Lista de produtos</a>
+                        <button class="btn btn-primary" id="guardar">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('../includes/footer') %>
